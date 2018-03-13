@@ -35,3 +35,29 @@ function purelyAddToppingToDonut(donut, property, value) {
   newDonut[property] = value;
   return newDonut;
 }
+
+// Higher Order Function that takes another function as an parameter
+function filter(array, callback) {
+  const evensArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i])) {
+      evensArray.push(array[i]);
+    }
+  }
+  return evensArray;
+}
+
+function isEven(num) {
+  return num % 2 === 0
+}
+
+// Higher Order Function that returns another function
+// Partial application b/c we have some of the information but we're calling the function in parts 
+function multiplyBy(multiplier) {
+  return function(num) {
+    return multiplier * num;
+  }
+}
+// can be invoked as multiplyBy(2)(10) or
+// const double = multiplyBy(2)
+// double(100)
